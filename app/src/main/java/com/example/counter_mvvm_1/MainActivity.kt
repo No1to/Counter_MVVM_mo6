@@ -1,14 +1,15 @@
 package com.example.counter_mvvm_1
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.example.counter_mvvm_1.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val viewModel: CounterViewModel by viewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun counterOperations() {
-        viewModel.count.observe(this) { value ->
+        viewModel.tvResult.observe(this) { value ->
             binding.result.text = value.toString()
         }
         binding.decBtn.setOnClickListener {

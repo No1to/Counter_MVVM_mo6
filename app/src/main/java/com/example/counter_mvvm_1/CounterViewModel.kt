@@ -1,23 +1,25 @@
 package com.example.counter_mvvm_1
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class CounterViewModel : ViewModel() {
 
-    private val counter = MutableLiveData<Int>()
+    private var counter = 0
+    private val _counterMlv = MutableLiveData<Int>()
+    val tvResult: LiveData<Int> = _counterMlv
 
-    val count get() = counter
 
     fun increment() {
-        counter.value = (counter.value ?: 0) + 1
+        _counterMlv.value = ++counter
     }
 
     fun decrement() {
-        counter.value = (counter.value ?: 0) - 1
+        _counterMlv.value = --counter
     }
 
     fun reset() {
-        counter.value = 0
+        _counterMlv.value = 0
     }
 }
